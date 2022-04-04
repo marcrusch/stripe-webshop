@@ -3,6 +3,7 @@ const app = express();
 require("dotenv").config();
 
 const SECRET_KEY = process.env.REACT_APP_STRIPE_SECRET_KEY;
+
 // This is a public sample test API key.
 // Don’t submit any personally identifiable information in requests made with this key.
 // Sign in to see your own test API key embedded in code samples.
