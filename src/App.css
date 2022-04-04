@@ -14,7 +14,12 @@ body {
   width: 100vw;
 }
 
-form {
+a {
+  text-decoration: none;
+}
+
+  
+.payment-form {
   width: 30vw;
   min-width: 500px;
   align-self: center;
@@ -38,7 +43,7 @@ form {
 }
 
 /* Buttons and links */
-button {
+.payment-button {
   background: #5469d4;
   font-family: Arial, sans-serif;
   color: #ffffff;
@@ -114,6 +119,19 @@ button:disabled {
   transform-origin: 0px 10.2px;
   -webkit-animation: loading 2s infinite ease;
   animation: loading 2s infinite ease;
+}
+
+.header {
+  position: relative;
+  height: 100px;
+  width: 100vw;
+  background-color: #ddd;
+}
+
+.cart {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 @keyframes loading {

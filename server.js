@@ -1,4 +1,5 @@
 const express = require("express");
+const products = require("./src/utils/products");
 const app = express();
 require("dotenv").config();
 
@@ -13,22 +14,20 @@ app.use(express.static("public"));
 app.use(express.json());
 
 const calculateOrderAmount = (items) => {
-  // Replace this constant with a calculation of the order's amount
-  // Calculate the order total on the server to prevent
-  // people from directly manipulating the amount on the client
-  return 1400;
+  console.log(items);
+  let price = 0;
+  items.forEach((item) => {
+    price += products[item.id].price;
+  });
+  return price;
 };
 
 app.post("/create-payment-intent", async (req, res) => {
-  const { items } = req.body;
-
-  // Create a PaymentIntent with the order amount and currency
+  const items = req.body;
   const paymentIntent = await stripe.paymentIntents.create({
     amount: calculateOrderAmount(items),
-    currency: "eur",
-    automatic_payment_methods: {
-      enabled: true,
-    },
+    currency: "chf",
+    payment_method_types: ["card"],
   });
 
   res.send({

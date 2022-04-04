@@ -2,18 +2,23 @@
   "name": "stripe-webshop",
   "version": "0.1.0",
   "dependencies": {
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.5.1",
+    "@mui/material": "^5.5.3",
     "@stripe/react-stripe-js": "^1.0.0",
     "@stripe/stripe-js": "^1.0.0",
     "express": "^4.17.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "^3.4.0",
     "stripe": "^8.202.0"
   },
   "devDependencies": {
     "concurrently": "4.1.2"
   },
-  "homepage": "http://localhost:3000/checkout",
+  "homepage": "http://localhost:3000",
   "proxy": "http://localhost:4242",
   "scripts": {
     "start-client": "react-scripts start",

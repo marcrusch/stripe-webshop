@@ -1,47 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-
-import CheckoutForm from "./CheckoutForm";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-const PUBLIC_KEY = process.env.REACT_APP_STRIPE_PUBLIC_KEY;
-
-// Make sure to call loadStripe outside of a component’s render to avoid
-// recreating the Stripe object on every render.
-// This is a public sample test API key.
-// Don’t submit any personally identifiable information in requests made with this key.
-// Sign in to see your own test API key embedded in code samples.
-const stripePromise = loadStripe(PUBLIC_KEY);
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Home";
+import Checkout from "./Checkout";
+import Layout from "./Layout";
+import Success from "./Success";
+import Cancel from "./Cancel";
 
 export default function App() {
-  const [clientSecret, setClientSecret] = useState("");
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
-    fetch("/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
-    })
-      .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret));
-  }, []);
-
-  const appearance = {
-    theme: 'stripe',
-  };
-  const options = {
-    clientSecret,
-    appearance,
-  };
-
+    console.log(cart);
+  }, [cart]);
   return (
     <div className="App">
-      {clientSecret && (
-        <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm />
-        </Elements>
-      )}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home cart={cart} setCart={setCart} />} />
+            <Route
+              path="/checkout"
+              element={<Checkout cart={cart} setCart={setCart} />}
+            />
+            <Route path="/success" element={<Success />} />
+            <Route path="/cancel" element={<Cancel />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
