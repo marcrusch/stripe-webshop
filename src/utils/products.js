@@ -2,7 +2,7 @@ const products = [
   {
     title: 'MacBook Pro 16"',
     media:
-      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mac-card-40-macbook-pro-16-202110?wid=600&hei=500&fmt=p-jpg&qlt=95&.v=1633726244000",
+      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mac-card-40-macbook-pro-16-202110?wid=6&hei=5&fmt=p-jpg&qlt=95&.v=16337262440",
     price: 2499,
   },
   {

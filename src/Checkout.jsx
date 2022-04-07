@@ -38,7 +38,12 @@ export default function Checkout({ cart, setCart }) {
       <Typography variant="h2">Checkout</Typography>
       <Box sx={{ marginBottom: "20px" }}>
         {cart.map((item) => (
-          <CartItem product={item} cart={cart} setCart={setCart} />
+          <CartItem
+            product={item}
+            cart={cart}
+            setCart={setCart}
+            key={`cart-item_${cart.indexOf(item)}`}
+          />
         ))}
         <Typography variant="caption">Total: CHF {total}.-</Typography>
       </Box>

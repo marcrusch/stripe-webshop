@@ -21,7 +21,12 @@ export default function Cart({ cart, setCart }) {
         sx={{ "& .MuiDrawer-paper": { padding: "20px" } }}
       >
         {cart.map((item) => (
-          <CartItem product={item} cart={cart} setCart={setCart} />
+          <CartItem
+            product={item}
+            cart={cart}
+            setCart={setCart}
+            key={`cart-item_${cart.indexOf(item)}`}
+          />
         ))}
         <Link to={cart.length ? "/checkout" : ""}>
           <Button sx={{ float: "right" }} disabled={!cart.length}>

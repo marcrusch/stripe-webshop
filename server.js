@@ -14,12 +14,11 @@ app.use(express.static("public"));
 app.use(express.json());
 
 const calculateOrderAmount = (items) => {
-  console.log(items);
   let price = 0;
   items.forEach((item) => {
     price += products[item.id].price;
   });
-  return price;
+  return price * 100;
 };
 
 app.post("/create-payment-intent", async (req, res) => {

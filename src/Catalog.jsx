@@ -15,7 +15,7 @@ export default function Catalog({ cart, setCart }) {
         </Typography>
         <Grid container spacing={5}>
           {products.map((product) => (
-            <Grid item xs={4}>
+            <Grid item xs={4} key={`grid_${products.indexOf(product)}`}>
               <Product
                 cart={cart}
                 setCart={setCart}

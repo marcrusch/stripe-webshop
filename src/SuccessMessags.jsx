@@ -19,7 +19,7 @@ export default function SuccessMessage() {
   return (
     <Typography>
       {paymentInfo
-        ? `Your payment of CHF ${paymentInfo.amount}.- was successful!`
+        ? `Your payment of CHF ${paymentInfo.amount / 100}.- was successful!`
         : ""}
     </Typography>
   );
